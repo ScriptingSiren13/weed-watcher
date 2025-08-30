@@ -1,0 +1,37 @@
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+env/
+venv/
+
+# IDE files
+.idea/
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Dataset folder
+dataset/
+
+
+
+# Ignore all other models
+app/model1.ipynb
+app/model2.ipynb
+app/model3.ipynb
+app/model4.ipynb
+app/model5.ipynb
+app/model6.ipynb
+app/model7.ipynb
+app/model8.ipynb
+app/Potential-model9.ipynb
+
+# Keep the final model
+
+# Keep the final model
+!app/Final-model10.ipynb
