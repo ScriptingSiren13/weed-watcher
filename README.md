@@ -14,7 +14,7 @@ The dataset used in this project was **collected locally in Srinagar, Kashmir**,
 
 ---
 
-## 📌 Table of Contents
+##  Table of Contents
 1. [Features](#-features)
 2. [Tech Stack](#tech-stack)
 3. [Dataset](#dataset)
@@ -28,7 +28,7 @@ The dataset used in this project was **collected locally in Srinagar, Kashmir**,
 
 ---
 
-## 🚀 Features
+##  Features
 - Weed detection using **YOLOv8l**.
 - Two UIs:  
   - **Streamlit App** → quick demo with adjustable confidence threshold (0–100%).  
@@ -51,7 +51,7 @@ The dataset used in this project was **collected locally in Srinagar, Kashmir**,
 ## Dataset
 - **Collected locally** in Srinagar, Kashmir (~330 raw images).  
 - Images labeled in **Label Studio**.  
-- **Data augmentation** performed using Roboflow → expanded dataset to ~650 images.  
+- **Data augmentation** performed using **Roboflow** → expanded dataset to ~650 images.  
 - Final YOLO dataset split:  
   - `train/` → 579 images  
   - `val/` → 22 images  
@@ -76,7 +76,7 @@ weed-detection-app/
 ```
 ---
 
-## ⚙️ Installation & Setup
+##  Installation & Setup
 
 ### 1. Clone Repository
 ```bash
