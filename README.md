@@ -133,7 +133,7 @@ Then open frontend/index.html in a browser.
 
 ---
 
-## 📸 Screenshots  
+##  Screenshots  
 
 ### Streamlit Interface  
 ![Streamlit UI](result_screenshots/Streamlit_ui.png)  
