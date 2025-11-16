@@ -1,4 +1,4 @@
-# 🌱 Weed Watcher – A Weed Detection App  
+#  Weed Watcher – A Weed Detection App  
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)  
 ![YOLOv8](https://img.shields.io/badge/YOLOv8-vision-green?logo=github)  
