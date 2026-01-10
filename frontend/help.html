@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Help - Weed Watcher</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="title-section">
+      <h1>Weed Watcher</h1>
+      <p class="tagline">No weed escapes the watcher</p>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="index.html#upload">Upload</a>
+    <a href="help.html" class="active">Help</a>
+  </nav>
+
+  <!-- MAIN FAQ SECTION -->
+  <main class="faq-container">
+    <h2>Frequently Asked Questions</h2>
+
+    <!-- FAQ ITEM START -->
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>What types of images should I upload?</span>
+        <span class="chevron">⌄</span>
+      </button>
+      <div class="faq-answer">
+        <p>You should upload clear images of gardens or farmland with visible weeds or crops. Higher image quality leads to better detection results.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>What format should the image be in?</span>
+        <span class="chevron">⌄</span>
+      </button>
+      <div class="faq-answer">
+        <p>We support .jpg, .jpeg, and .png formats. Avoid uploading excessively large files for faster response time.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>How does the model detect weeds?</span>
+        <span class="chevron">⌄</span>
+      </button>
+      <div class="faq-answer">
+        <p>Our YOLOv8 model is trained on weed images and detects weeds by drawing bounding boxes around them in real-time.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>What happens if no weed is detected?</span>
+        <span class="chevron">⌄</span>
+      </button>
+      <div class="faq-answer">
+        <p>You’ll see a message: “No weed detected.” This may happen if the image is unclear or no weeds are present.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Can I use this tool on mobile?</span>
+        <span class="chevron">⌄</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes, Weed Watcher works on mobile browsers. Use landscape mode for the best experience.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Is my uploaded image stored permanently?</span>
+        <span class="chevron">⌄</span>
+      </button>
+      <div class="faq-answer">
+        <p>No. All uploads are temporary and processed locally without permanent storage.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Can it detect all types of weeds?</span>
+        <span class="chevron">⌄</span>
+      </button>
+      <div class="faq-answer">
+        <p>It performs well on common weed types included in our dataset. Accuracy may vary for rare or unseen weed species.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Will you support drone or mobile apps in future?</span>
+        <span class="chevron">⌄</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes! Future versions will include mobile apps and drone integration for field-level weed detection.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Weed Watcher. All rights reserved.</p>
+  </footer>
+
+  <!-- TOGGLE SCRIPT -->
+  <script>
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const chevron = button.querySelector('.chevron');
+
+        // Toggle answer visibility
+        button.classList.toggle('active');
+        answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + 'px';
+
+        // Toggle chevron
+        chevron.textContent = button.classList.contains('active') ? '⌃' : '⌄';
+      });
+    });
+  </script>
+
+</body>
+</html>

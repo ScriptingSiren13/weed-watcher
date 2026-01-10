@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weed Watcher</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+<body>
+
+
+    <!-- HEADER STARTS -->
+  <header class="site-header">
+
+
+    <!-- TITLE SECTION STARTS -->
+   <div class="title-section">
+    <h1>Weed Watcher</h1>
+    <p class="tagline">No weed escapes the watcher</p>
+  </div>
+    <!-- TITLE SECTION ENDS -->
+
+  </header>
+   <!-- HEADER ENDS -->
+
+
+
+    <!-- NAV BAR STARTS -->
+    <nav class="navbar">
+      <a href="#about">About</a>
+      <a href="#upload">Upload</a>
+      <a href="help.html">Help</a>
+    </nav>
+    <!-- NAV BAR STARTS -->
+
+
+
+
+
+<!-- MAIN CONTAINER STARS HERE -->
+<div class="main-container">
+
+
+<!-- SIEBAR STARTS HERE -->
+  <aside class="sidebar">
+
+  <!-- PROFILE INFO STARTS HERE -->
+  <div class="profile-info">
+
+  <h3>Zarnain</h3>
+  <p>AI/ML Intern</p>
+  <hr class="profile-divider" />
+
+
+  <!-- SOCIAL ICONS STARTS HERE -->
+  <div class="social-icons">
+
+  <a href="https://github.com/ScriptingSiren13" target="_blank" class="icon-wrapper">
+    <i class="fab fa-github"></i>
+    <span class="tooltip">GitHub</span>
+  </a>
+
+  <a href="https://www.linkedin.com/in/zarnain-723a31325/" target="_blank" class="icon-wrapper">
+    <i class="fab fa-linkedin"></i>
+    <span class="tooltip">LinkedIn</span>
+  </a>
+
+ <a href="mailto:zedd.web13@gmail.com" class="icon-wrapper">
+  <i class="fas fa-envelope"></i>
+  <span class="tooltip">Email</span>
+</a>
+
+
+</div>
+<!-- SOCIAL ICONS ENDS HERE -->
+
+
+</div>
+<!-- PROFILE INFO ENDS HERE -->
+
+
+    
+  </aside>
+<!-- SIEBAR STARTS HERE -->
+
+
+
+<!-- MAIN SECTION STARTS HERE -->
+    <section class="content-area">
+
+
+    <!-- ABOUT SECTION STARTS -->
+    <div class="about-section">
+
+
+        <!-- ABOUT TEXT STARTS HERE -->
+        <div class="about-text">
+            <h2>About</h2>
+            <p>This project applies the YOLOv8 object detection model to identify and localize weeds in garden images using bounding boxes.
+                A custom dataset was created by capturing and annotating real weed images from my garden.
+                The trained model enables fast and accurate weed detection, supporting applications in precision gardening and automated weed management.</p>
+        </div>
+    <!-- ABOUT TEXT ENDS HERE -->
+
+
+
+        <!-- WEED IMAGE STARTS HERE -->
+        <div class="about-image">
+            <img src="weed.jpg" alt="Weed Detection Example" />
+        </div>
+
+
+
+
+    </div>
+    <!-- ABOUT SECTION ENDS -->
+
+
+    <!-- HOW IT WORKS STARTS -->
+    <div class="how-it-works">
+        <details>
+            <summary>How it works ⌄</summary>
+            <ol>
+                <li><strong>Upload a garden or farmland image:</strong> Select and upload an image containing weeds or crops from your device.</li>
+                <li><strong>The YOLOv8 model analyzes the image:</strong> Our custom-trained YOLOv8 model runs inference on the uploaded image in real-time.</li>
+                <li><strong>Weeds are detected and localized:</strong> Bounding boxes are drawn around all detected weed instances using object detection.</li>
+                <li><strong>Results are displayed instantly:</strong> You see the annotated image, and optionally, download the result for further use.</li>
+            </ol>
+        </details>
+    </div>
+    <!-- HOW IT WORKS ENDS-->
+
+
+
+    <!-- UPLOAD SECTION STARTS -->
+    <section id="upload-section" class="upload-section">
+
+        <h2>Upload an Image</h2>
+
+        <form>
+            <label for="fileUpload" class="custom-upload-btn">
+                Choose a file
+            <input type="file" id="fileUpload" name="file" accept="image/*" />
+            </label>
+            <p id="fileName">No file chosen yet</p>
+        </form>
+
+
+         <!-- Spinner -->
+        <div id="spinner" class="spinner" style="display: none;"></div>
+
+
+        <img id="result-image" src="" alt="Detection Result" style="max-width: 100%; margin-top: 1rem; display: none;" />
+
+    </section>
+    <!-- UPLOAD SECTION ENDS -->
+
+
+
+
+
+  </section>
+  <!-- MAIN SECTION ENDS HERE -->
+
+
+
+
+
+
+</div>
+<!-- MAIN CONTAINER ENDS HERE -->
+
+
+
+<!-- JAVASCRIPT STARTS HERE -->
+<script>
+  const fileInput = document.getElementById('fileUpload');
+  const fileNameDisplay = document.getElementById('fileName');
+  const resultImage = document.getElementById('result-image');
+  const spinner = document.getElementById('spinner');
+
+  fileInput.addEventListener('change', async function () {
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      fileNameDisplay.textContent = `Selected file: ${file.name}`;
+      
+      // Reset result and show spinner
+      resultImage.style.display = "none";
+      spinner.style.display = "block";
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+        const response = await fetch("http://127.0.0.1:8000/predict", {
+          method: "POST",
+          body: formData
+        });
+
+        const data = await response.json();
+        spinner.style.display = "none";  // Hide spinner when done
+
+        if (data.image_url) {
+          resultImage.src = `http://127.0.0.1:8000${data.image_url}`;
+          resultImage.style.display = "block";
+        } else {
+          alert("⚠️ No weed detected or something went wrong.");
+        }
+
+      } catch (error) {
+        spinner.style.display = "none";  // Hide spinner on error
+        console.error("Error:", error);
+        alert("Error uploading or predicting the image.");
+      }
+
+    } else {
+      fileNameDisplay.textContent = 'No file chosen yet';
+    }
+  });
+</script>
+<!-- JAVASCRIPT ENDS HERE -->
+
+
+
+
+
+<!-- FOOTER STARTS -->
+<footer class="site-footer">
+  <p>&copy; 2025 Weed Watcher. All rights reserved.</p>
+</footer>
+<!-- FOOTER ENDS -->
+
+
+</body>
+</html>
